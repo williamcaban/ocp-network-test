@@ -1,0 +1,39 @@
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foobar
+  annotations: 
+     # use sriov networks
+     k8s.v1.cni.cncf.io/networks: '[
+        { "name": "br-access", "interface":"br-access"},
+        { "name": "br-roaming", "interface":"br-roaming"},
+        { "name": "br-s5s8", "interface":"br-s5s8"},
+        { "name": "br-slg", "interface":"br-slg"},
+        { "name": "br-sls", "interface":"br-sls"}
+    ]'
+spec:
+  nodeSelector:
+    example.com/example: ""
+  containers:
+    - name: frr
+      tty: true
+      stdin: true
+      image: quay.io/wcaban/frr
+      imagePullPolicy: IfNotPresent
+      command:
+      - "/bin/bash"
+      - "-c"
+      args:  [ "sleep infinity" ]
+      resources:
+        requests:
+          cpu: 20m
+          memory: 20Mi 
+          openshift.io/net_s1u: '1' # vfio VF
+          openshift.io/net_sgi: '1' # vfio VF
+        limits:
+          cpu: 200m
+          memory: 200Mi 
+          openshift.io/net_s1u: '1' # vfio VF
+          openshift.io/net_sgi: '1' # vfio VF

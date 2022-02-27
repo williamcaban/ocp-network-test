@@ -1,0 +1,106 @@
+---
+# bridge access
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: br-access
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "br-access",
+      "type": "bridge",
+      "master":"ens802.2032",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "192.168.32.0/24",
+        "rangeStart": "192.168.32.100",
+        "rangeEnd": "192.168.32.216",
+        "gateway": "192.168.32.1"
+        }
+    }
+---
+# bridge roaming
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: br-roaming
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "br-roaming",
+      "type": "bridge",
+      "master":"ens802.2033",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "192.168.33.0/24",
+        "rangeStart": "192.168.33.100",
+        "rangeEnd": "192.168.33.216",
+        "gateway": "192.168.33.1"
+        }
+    }
+---
+# bridge s5s8
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: br-s5s8
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "br-s5s8",
+      "type": "bridge",
+      "master":"ens802.2034",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "192.168.34.0/24",
+        "rangeStart": "192.168.34.100",
+        "rangeEnd": "192.168.34.216",
+        "gateway": "192.168.34.1"
+        }
+    }
+---
+# bridge sls
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: br-sls
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "br-sls",
+      "type": "bridge",
+      "master":"ens802.2035",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "192.168.35.0/24",
+        "rangeStart": "192.168.35.100",
+        "rangeEnd": "192.168.35.216",
+        "gateway": "192.168.35.1"
+        }
+    }
+---
+# bridge slg
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: br-slg
+spec:
+  config: |-
+    {
+      "cniVersion": "0.3.1",
+      "name": "br-slg",
+      "type": "bridge",
+      "master":"ens802.2036",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "192.168.36.0/24",
+        "rangeStart": "192.168.36.100",
+        "rangeEnd": "192.168.36.216",
+        "gateway": "192.168.36.1"
+        }
+    }
+# oc get network-attachment-definitions

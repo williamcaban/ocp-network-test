@@ -1,0 +1,58 @@
+---
+# Allocating total of 9 VF (1x netdevice, 8x vfio)
+# oc label node <node-name> example.com/example=''
+# oc label node <node-name> example.com/example=''
+# 1 Netdevice for PF 
+# creates: ens802v0
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetworkNodePolicy
+metadata:
+  name: net-other
+  namespace: openshift-sriov-network-operator
+spec:
+  deviceType: netdevice
+  resourceName: net_other
+  nodeSelector:
+    example.com/example: ''
+  numVfs: 9
+  nicSelector:
+    pfNames:
+      - 'ens802#0-0'
+---
+# 4 VF for SGi
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetworkNodePolicy
+metadata:
+  name: net-sgi
+  namespace: openshift-sriov-network-operator
+spec:
+  deviceType: vfio-pci
+  resourceName: net_sgi
+  isRdma: false
+  linkType: eth
+  nicSelector:
+    pfNames:
+      - "ens802#1-4"
+  nodeSelector:
+    example.com/example: ''
+  numVfs: 9
+  priority: 99
+---
+# 4 VF for S1-u
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetworkNodePolicy
+metadata:
+  name: net-s1u
+  namespace: openshift-sriov-network-operator
+spec:
+  deviceType: vfio-pci
+  resourceName: net_s1u
+  isRdma: false
+  linkType: eth
+  nicSelector:
+    pfNames:
+      - "ens802#5-8"
+  nodeSelector:
+    example.com/example: ''
+  numVfs: 9
+  priority: 99

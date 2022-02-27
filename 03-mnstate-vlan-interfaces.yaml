@@ -1,0 +1,85 @@
+--- 
+apiVersion: nmstate.io/v1beta1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ens802-vlan2032 
+spec:
+  nodeSelector: 
+    example.com/example: '' 
+  desiredState:
+    interfaces:
+    - name: ens802.2032 
+      description: VLAN using ens802 
+      type: vlan 
+      state: up 
+      vlan:
+        base-iface: ens802 
+        id: 2032 
+--- 
+apiVersion: nmstate.io/v1beta1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ens802-vlan2033 
+spec:
+  nodeSelector: 
+    example.com/example: '' 
+  desiredState:
+    interfaces:
+    - name: ens802.2033 
+      description: VLAN using ens802 
+      type: vlan 
+      state: up 
+      vlan:
+        base-iface: ens802 
+        id: 2033 
+--- 
+apiVersion: nmstate.io/v1beta1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ens802-vlan2034 
+spec:
+  nodeSelector: 
+    example.com/example: '' 
+  desiredState:
+    interfaces:
+    - name: ens802.2034 
+      description: VLAN using ens802 
+      type: vlan 
+      state: up 
+      vlan:
+        base-iface: ens802 
+        id: 2034 
+--- 
+apiVersion: nmstate.io/v1beta1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ens802-vlan2035 
+spec:
+  nodeSelector: 
+    example.com/example: '' 
+  desiredState:
+    interfaces:
+    - name: ens802.2035 
+      description: VLAN using ens802 
+      type: vlan 
+      state: up 
+      vlan:
+        base-iface: ens802 
+        id: 2035 
+--- 
+apiVersion: nmstate.io/v1beta1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ens802-vlan2036 
+spec:
+  nodeSelector: 
+    example.com/example: '' 
+  desiredState:
+    interfaces:
+    - name: ens802.2036 
+      description: VLAN using ens802 
+      type: vlan 
+      state: up 
+      vlan:
+        base-iface: ens802 
+        id: 2036
